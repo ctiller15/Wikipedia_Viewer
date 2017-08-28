@@ -1,0 +1,157 @@
+/*Removing all default borders and setting the default sizing to border-box.*/
+
+  @media only screen and (min-width:768px){
+    /*Setting the size for the search field, and centering it as well.*/
+    .searchField{
+      width: 50%;
+      margin: 0 auto;
+    }
+    .small_screen { display: none; }
+
+  }
+
+  @media only screen and (max-width:768px){
+    .searchField{
+      width: 70%;
+      margin: 0 auto;
+    }
+    .large_screen { display: none; }
+
+  }
+
+*{
+  box-sizing: border-box;
+  border: none;
+}
+
+/*Removing all default outlines on focused elements.*/
+*:focus{
+  outline: none;
+}
+
+/*Setting default background color and font to arial.*/
+body{
+  background-color: #1A53DC;
+  /*background-color: #BFBFBF;*/
+  font-family: Arial;
+}
+
+/*Making sure all anchor elements extend to fix their parent element.*/
+a{
+  display: inline-block;
+  color: inherit;
+  text-decoration: inherit;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+/*Making sure that we can use font awesome icons in the search field. Arial is the main fallback.*/
+input{
+  font-family: 'FontAwesome', Arial, Helvetica;
+  font-size: 2em;
+  border-radius: 8%/50%;
+  padding: 4% 2%;
+  width: 100%;
+  margin-bottom: 2%;
+  border: 2px solid #121946;
+  /*border: 2px solid black;*/
+  transition: border 1s;
+}
+
+/*Changing the border text upon focusing.*/
+input[type=text]:focus {
+  border: 2px solid #63E1DB;
+  /*  border: 2px solid #7D7D7D;*/
+}
+
+/*Modifying the entire button div such that they both go to the end of the flex container.*/
+.buttons{
+  display: flex;
+  justify-content: space-between;
+}
+
+/*Sizing the  main search button. (Yes, I have become aware that the naming is very unintuitive and confusing. I will fix this in all future projects.)*/
+.store{
+  order: 0;
+  width: 30%;
+  border-radius: 10%/50%;
+  font-size: 1.5em;
+}
+
+/*Sizing and moving the "random" anchor element.*/
+.random{
+  width: 50%;
+  order: -1;
+}
+
+/*Styling the button within the anchor element. The goal is to give semi-rounded edges.*/
+.randbutton{
+  width: 100%;
+  border-radius: 5%/50%;
+  font-size: 1.5em;
+}
+
+/*Setting some transition properties...*/
+button{
+  transition: background-color .5s, transform .5s;
+}
+
+/*To be modified when the user hovers over the buttons.*/
+button:hover{
+  background-color: #F5F5F5;
+  transform: scale(1.05);
+}
+
+/*I decided that I didn't want the numbering for the OL elements. This was the best solution to that problem.*/
+#searchResults{
+  list-style-type: none;
+}
+
+
+/*The default styling for every li element. They should be lighter than the background.*/
+li{
+  background-color: #E0E0E0;
+  text-align: center;
+  color: black;
+  margin-bottom: 1%;
+  padding: 1%;
+  border-radius: 1%/10%;
+}
+
+/*Giving the search items an animation when the call is finished. They fade in from the bottom of the screen.*/
+#searchResults li{
+  border: 1px solid #121946;
+  animation: fadein .75s;
+  transition: transform .5s, background-color .5s, color .5s, border .5s;
+}
+
+/*Running the animation...*/
+@keyframes fadein {
+  from {opacity: 0; transform: translateY(20%);}
+  to {opacity: 1; transform: translateY(0%);}
+}
+
+/* upon hovering, the user gets some sort of confirmation that they're on that element.*/
+#searchResults li:hover{
+  color: #333333;
+  transform: translateY(-5%);
+  background-color: #F5F5F5;
+  border: 1px solid #63E1DB;
+}
+
+/*Changing the size of the name so the users eye is drawn to it.*/
+.name{
+  font-size: 2em;
+}
+
+/*Centering all of the elements with the searches.*/
+.results{
+  width: 50%;
+  margin: auto;
+}
+/*Making sure the extra search terms fade in *after* the rest of the page has already come in.*/
+.contentCard{
+  animation: fadein 3s;
+}
